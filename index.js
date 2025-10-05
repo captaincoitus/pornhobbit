@@ -70,7 +70,7 @@ videobg.style.width = `${width}px`;
 
 // let randomIndex = Math.floor(Math.random() * (videos.length - 0)) + 0;
 // document.body.style.backgroundImage = `url('./static/${backgrounds[randomIndex]}')`;
-videobg.setAttribute('src', `./static/${videos[INDEX]}`)
+videobg.setAttribute('src', `/pornhobbit/static/${videos[INDEX]}`)
 
 document.addEventListener('DOMContentLoaded', () => {
     // Select all forms on the page
@@ -165,7 +165,7 @@ videobg.addEventListener('ended',(e)=>{
     } else {
         INDEX = 0;
     }
-    videobg.setAttribute('src',`./static/${videos[INDEX]}`);
+    videobg.setAttribute('src',`/pornhobbit/static/${videos[INDEX]}`);
     videobg.play();
 })
 
