@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./index.css">
+  <script type="text/javascript" src="./index.js" defer></script>
+</head>
+
+<body class="d-flex justify-content-center align-items-center">
+  <div class="alert alert-danger" id="alert">
+    Login failed. Please close this window
+  </div>
+  <div class="container-md justify-content-center align-items-center flex-column position-relative" id="root">
+    <br>
+    <div class="row d-flex justify-content-start align-items-center w-75">
+      <form id="reset" name="reset">
+        <button type="submit" class="btn btn-warning">Reset All Forms</button>
+      </form>
+    </div>
+    <div class="row d-flex justify-content-start align-items-center w-75">
+      <h1>Vixen Media Group</h1>
+      <form id="Strike3Form" name="Strike3Form">
+        <div class="mb-3">
+          <label for="pornstarname" class="form-label">Search Term</label>
+          <input type="text" class="form-control" name="searchterm">
+        </div>
+
+        <div class="row d-flex justify-content-start align-items-center flex-grow-1">
+          <label for="searchtype">Search Type</label>
+          <div class="col-sm-1 d-flex justify-content-start align-items-center">
+            <input class="form-check-input" type="radio" name="searchtype" value="performers" checked>
+            <label class="form-check-label ms-2 me-2" for="searchtype1">Pornstar</label>
+          </div>
+          <div class="col-sm-1 d-flex justify-content-start align-items-center">
+            <input class="form-check-input" type="radio" name="searchtype" value="videos">
+            <label class="form-check-label ms-2 me-2" for="searchtype2">Video</label>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" data-site="blacked">Blacked</button>
+        <button type="submit" class="btn btn-primary" data-site="blackedraw">BlackedRaw</button>
+        <button type="submit" class="btn btn-primary" data-site="tushy">Tushy</button>
+        <button type="submit" class="btn btn-primary" data-site="tushyraw">TushyRaw</button>
+        <button type="submit" class="btn btn-primary" data-site="deeper">Deeper</button>
+        <button type="submit" class="btn btn-primary" data-site="slayed">Slayed</button>
+        <button type="submit" class="btn btn-primary" data-site="milfy">Milfy</button>
+        <button type="submit" class="btn btn-primary" data-site="wifey">Wifey</button>
+        <button type="submit" class="btn btn-primary" data-site="vixen">Vixen</button>
+      </form>
+    </div>
+    <hr>
+    <div class="row d-flex justify-content-start align-items-center w-75">
+      <div class="col">
+        <h1>Wiki Feet</h1>
+        <form id="WikifeetForm" name="WikifeetForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Celeb Name</label>
+            <input type="text" class="form-control" name="searchterm">
+          </div>
+          <button type="submit" class="btn btn-primary" data-site="wikifeet">Wikifeet</button>
+          <button type="submit" class="btn btn-primary" data-site="wikifeetx">WikifeetX</button>
+        </form>
+      </div>
+      <div class="col">
+        <h1>Brazzers</h1>
+        <form id="BrazzersForm" name="BrazzersForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Search Term</label>
+            <input type="text" class="form-control" name="searchterm">
+          </div>
+          <button type="submit" class="btn btn-primary" data-site="brazzersnetwork"
+            data-searchtype="pornstars">Pornstar</button>
+          <button type="submit" class="btn btn-primary" data-site="brazzersnetwork"
+            data-searchtype="videos">Video</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+    <div class="row position-absolute z-n1 rounded-5" id="videorow">
+      <video id="videobg" class="position-relative rounded-5"
+        src="./static/21 NATURALS - Gorgeous Sybil Takes a Break from a Photoshoot to Suck and Fuck a Big Cock.webm"
+        autoplay muted>
+      </video>
+      <div id="videoOverlay"></div>
+    </div>
+  </div>
+  <div id="tempbtn">
+    <div id="volume">
+      <svg style="display: block;" id="volume_off" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#1f1f1f"><path d="M813-56 681-188q-28 20-60.5 34.5T553-131v-62q23-7 44.5-15.5T638-231L473-397v237L273-360H113v-240h156L49-820l43-43 764 763-43 44Zm-36-232-43-43q20-34 29.5-71.92Q773-440.85 773-481q0-103.32-60-184.66T553-769v-62q124 28 202 125.5T833-481q0 51-14 100t-42 93ZM643-422l-90-90v-130q47 22 73.5 66t26.5 96q0 15-2.5 29.5T643-422ZM473-592 369-696l104-104v208Zm-60 286v-150l-84-84H173v120h126l114 114Zm-42-192Z"/></svg>
+      <svg id="volume_up" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#1f1f1f"><path d="M560-131v-62q97-28 158.5-107.5T780-481q0-101-61-181T560-769v-62q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm420 48v-337q55 17 87.5 64T660-480q0 57-33 104t-87 64ZM420-648 307-540H180v120h127l113 109v-337Zm-94 168Z"/></svg>
+      <svg id="volume_down" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#1f1f1f"><path d="M200-360v-240h160l200-200v640L360-360H200Zm420 48v-337q54 17 87 64t33 105q0 59-33 105t-87 63ZM500-648 387-540H260v120h127l113 109v-337ZM378-480Z"/></svg>
+    </div>
+    <input type="range" id="volumeSlider" min="0" max="20">
+  </div>
+</body>
+
+</html>
