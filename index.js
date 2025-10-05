@@ -1,29 +1,3 @@
-const backgrounds = [
-    "Freya-Parker-Feet-7020009.jpg",
-    "Freya-Parker-Feet-7020015.jpg",
-    "Freya-Parker-Feet-7724409.jpg",
-    "Sybil-Feet-4668274.jpg",
-    "Sybil-Feet-4668276.jpg",
-    "Sybil-Feet-4668277.jpg",
-    "Sybil-Feet-4766455.jpg",
-    "Sybil-Feet-5482638.jpg",
-    "Sybil-Feet-5512737.jpg",
-    "Sybil-Feet-5562110.jpg",
-    "Sybil-Feet-5562114.jpg",
-    "Sybil-Feet-6046503.jpg",
-    "Sybil-Feet-6046504.jpg",
-    "Sybil-Feet-6046505.jpg",
-    "Sybil-Feet-6046506.jpg",
-    "Sybil-Feet-6046507.jpg",
-    "Sybil-Feet-6046509.jpg",
-    "Sybil-Feet-6046510.jpg",
-    "Sybil-Feet-6091429.jpg",
-    "Sybil-Feet-6091430.jpg",
-    "Sybil-Feet-6091431.jpg",
-    "Sybil-Feet-6091433.jpg",
-    "Sybil-Feet-6091435.jpg",
-]
-
 const videos = [
     "21 NATURALS - Gorgeous Sybil Takes a Break from a Photoshoot to Suck and Fuck a Big Cock.webm",
     "Adriana Chechik sucks big cock and fucked in the ass.webm",
@@ -47,13 +21,14 @@ const videos = [
     "WhiteBoxxx - Sybil Hot Ass Ukrainian Babe Fetish Fantasy With Dominant Boyfriend.webm",
 ]
 
-const alert = document.querySelector("#alert");
+const disclaimer = document.querySelector("#disclaimer");
 const root = document.querySelector("#root");
 const videobg = document.querySelector("#videobg");
 const soundToggle = document.querySelector("#volume");
 const volumeOff = document.querySelector("#volume_off");
 const volumeDown = document.querySelector("#volume_down");
 const volumeUp = document.querySelector("#volume_up");
+const controls = document.querySelector("#controls");
 
 const INIT_VOLUME = 5;
 let INDEX = 0;
@@ -69,7 +44,7 @@ width -= parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddin
 videobg.style.width = `${width}px`;
 
 // let randomIndex = Math.floor(Math.random() * (videos.length - 0)) + 0;
-// document.body.style.backgroundImage = `url('./static/${backgrounds[randomIndex]}')`;
+// document.body.style.backgroundImage = `url('/pornhobbit/static/${backgrounds[randomIndex]}')`;
 videobg.setAttribute('src', `/pornhobbit/static/${videos[INDEX]}`)
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -77,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const forms = document.querySelectorAll('form');
 
     // soundToggle.checked = false;
+    volumeOff.style.display = 'block'
     volumeSlider.disabled = true;
     volumeSlider.value = INIT_VOLUME;
 
@@ -125,47 +101,40 @@ const getSearchType = (e) => {
 
 //----------------------------------------------------
 
-if (getCookie("authenticated") == null || getCookie("authenticated") == "") {
-    let username = prompt("Login to access this page\nUsername:");
-    let password = "";
-    if (username == null || username == "") {
-        alert.style.display = "block";
-        root.style.display = "none"
-    } else {
-        password = prompt("Login to access this page\nPassword:")
+if (getCookie("consent") == null || getCookie("consent") == "") {
 
-        if (password !== null && password !== "") {
-            if (username === "admin" && password === "PornSearchHelper") {
-                const date = new Date();
-                date.setTime(date.getTime() + (2 * 60 * 60 * 1000)); // Calculate future date in milliseconds
-                expires = "; expires=" + date.toUTCString();
-                document.cookie = `authenticated=true ${expires}; path=/; samesite=Lax`;
-                window.alert("Login Successful!!!")
-                root.style.display = "flex";
-            } else {
-                alert.style.display = "block";
-            }
-        } else {
-            alert.style.display = "block";
-        }
-    }
+    document.querySelector("#disclaimer-enter").addEventListener('click', (e) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (2 * 60 * 60 * 1000)); // Calculate future date in milliseconds
+        expires = "; expires=" + date.toUTCString();
+        document.cookie = `consent=true ${expires}; path=/; samesite=Lax`;
+        root.style.display = "flex";
+        controls.style.display = "flex";
+        disclaimer.style.display = "none";
+    });
+
+    document.querySelector("#disclaimer-exit").addEventListener('click', (e) => {
+        window.location.href = "https://www.google.com";
+    });
 } else {
     root.style.display = "flex";
+    controls.style.display = "flex";
+    disclaimer.style.display = "none";
 }
 
 // const backgroundInterval = setInterval(() => {
 //     let randomIndex = Math.floor(Math.random() * (videos.length - 0)) + 0;
-//     // document.body.style.backgroundImage = `url('./static/${backgrounds[randomIndex]}')`;
-//     videobg.setAttribute('src',`./static/${videos[randomIndex]}`)
+//     // document.body.style.backgroundImage = `url('/pornhobbit/static/${backgrounds[randomIndex]}')`;
+//     videobg.setAttribute('src',`/pornhobbit/static/${videos[randomIndex]}`)
 // }, 120000);
 
-videobg.addEventListener('ended',(e)=>{
+videobg.addEventListener('ended', (e) => {
     if (INDEX < videos.length - 1) {
         INDEX++;
     } else {
         INDEX = 0;
     }
-    videobg.setAttribute('src',`/pornhobbit/static/${videos[INDEX]}`);
+    videobg.setAttribute('src', `/pornhobbit/static/${videos[INDEX]}`);
     videobg.play();
 })
 
@@ -192,10 +161,10 @@ function getCookie(name) {
     return null; // Return null if the cookie is not found
 }
 
-soundToggle.addEventListener('click',(e)=>{
+soundToggle.addEventListener('click', (e) => {
     videobg.muted = !videobg.muted;
     volumeSlider.disabled = !volumeSlider.disabled;
-    videobg.volume = INIT_VOLUME/20;
+    videobg.volume = INIT_VOLUME / 20;
     volumeSlider.value = INIT_VOLUME;
 
     if (videobg.muted) {
@@ -206,8 +175,8 @@ soundToggle.addEventListener('click',(e)=>{
 
 });
 
-volumeSlider.addEventListener('input', (e)=>{
-    videobg.volume = e.target.value/20;
+volumeSlider.addEventListener('input', (e) => {
+    videobg.volume = e.target.value / 20;
     iconSelector(e.target.value);
 })
 
