@@ -5,9 +5,11 @@ const strike3network = [
 
 const wikifeet = ['wikifeet', 'wikifeetx']
 
-const brazzers = ['brazzersnetwork']
+const brazzers = ['brazzers','brazzersnetwork']
 
 const iafd = ['iafd']
+
+const bangbros = ['bangbros','bangbrosnetwork']
 
 const root = document.querySelector("#root");
 
@@ -21,20 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             let site = getSiteName(e);
-            let searchterm = form.searchterm.value.toLowerCase().trim();
+            let searchTerm = form.searchterm.value.toLowerCase().trim();
+            let searchType = form.searchtype.value.toLowerCase().trim();
 
             if (strike3network.includes(site))
-                window.open(`https://${getSiteName(e)}.com/${form.searchtype.value}/${searchterm.replaceAll(" ", "-")}`, "_blank");
+                window.open(`https://${getSiteName(e)}.com/${form.searchtype.value}/${searchTerm.replaceAll(" ", "-")}`, "_blank");
 
             if (wikifeet.includes(site))
-                window.open(`https://${getSiteName(e)}.com/${searchterm.replaceAll(" ", "_")}`, "_blank");
+                window.open(`https://${getSiteName(e)}.com/${searchTerm.replaceAll(" ", "_")}`, "_blank");
 
             if (brazzers.includes(site))
-                window.open(`https://${getSiteName(e)}.com/${form.searchtype.value === 'performers' ? 'pornstars' : 'videos'}?q=${searchterm}`, "_blank");
+                window.open(`https://${getSiteName(e)}.com/${searchType === 'performers' ? 'pornstars' : 'videos'}?q=${searchTerm}`, "_blank");
 
             if (iafd.includes(site))
-                window.open(`https://www.iafd.com/results.asp?searchtype=comprehensive&searchstring=${searchterm}`, "_blank");
+                window.open(`https://www.iafd.com/results.asp?searchtype=comprehensive&searchstring=${searchTerm}`, "_blank");
 
+            if (bangbros.includes(site))
+                open(`https://bangbros.com/${searchType === 'performers' ? 'searchmodels' : 'searchvideos'}?q=${searchTerm}`)
         })
     })
 });
@@ -42,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const getSiteName = (e) => {
     return e.target.dataset.site;
 }
+
+const open = (url) => window.open(url,'_blank')
 
 //----------------------------------------------------
 
